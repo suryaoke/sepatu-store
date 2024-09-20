@@ -13,7 +13,9 @@
              <ol class="breadcrumb breadcrumb-light">
                  <li class="breadcrumb-item"><a href="#">Application</a></li>
                  <li class="breadcrumb-item active" aria-current="page">
-
+                     @php
+                         $slug = request()->route('slug');
+                     @endphp
                      @if (request()->routeIs('dashboard'))
                          Dashboard
                      @elseif (request()->routeIs('brands.all'))
@@ -34,6 +36,10 @@
                          Tim
                      @elseif (request()->routeIs('profile'))
                          Profile
+                     @elseif (request()->routeIs('sepatu.show.create'))
+                         Sepatu-Create
+                     @elseif (request()->routeIs('sepatu.show.edit'))
+                         {{ $slug }}
                      @endif
 
                  </li>

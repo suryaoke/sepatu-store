@@ -1,7 +1,13 @@
    <footer class="flex flex-col w-full max-w-[1312px] mx-auto rounded-[32px] bg-black p-[120px] mt-[120px] mb-16">
        <div class="flex justify-between">
            <div class="flex flex-col gap-6 max-w-[306px] text-start">
-               <img src="{{ asset('frontend/assets/images/logos/Logo-2.svg') }}" class="h-12 w-fit" alt="icon">
+               <div style="display: flex; align-items: center;">
+                   <img style="width: 60px;" src="{{ asset('backend/dist/images/logo.svg') }}">
+                   <a href="{{ route('frontend') }}">
+                       <h2 style="margin-left: 10px; font-family: 'ClashDisplay-Bold';, text-transform: uppercase;  font-size: 30px;"
+                           class="text-white">SteadyStride</h2>
+                   </a>
+               </div>
                <p class="tracking-03 text-white"> {{ $kontak->alamat }} </p>
            </div>
            <nav class="flex gap-16 justify-end text-white">

@@ -23,14 +23,14 @@ class brandsController extends Controller
         // Validasi data yang dikirim melalui request
         $data = $request->validated();
 
-        // Memproses file foto
+
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
 
-            // Buat nama unik untuk file gambar yang diunggah
+
             $filename = time() . '_' . $foto->getClientOriginalName();
 
-            // Lokasi penyimpanan file
+
             $path = 'images/brands/' . $filename;
 
             // Menggunakan Intervention Image untuk mengubah ukuran gambar (misalnya, menjadi 300x300)
@@ -45,10 +45,9 @@ class brandsController extends Controller
             $data['foto'] = $path;
         }
 
-        $brands = new Brands($data);
+        $brands = Brands::create($data);
         $brands->created_at = Carbon::now();
         $brands->save();
-
 
         session()->flash('success', 'Brands Created Successfully.');
 

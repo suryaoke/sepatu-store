@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'hp',
         'foto',
+        'alamat',
         'role',
     ];
 

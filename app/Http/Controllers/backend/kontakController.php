@@ -22,9 +22,8 @@ class kontakController extends Controller
     public function create(KontakCreateRequest $request)
     {
         $data = $request->validated();
-        $kontak = new Kontak($data);
-        $kontak->created_at = Carbon::now();
-        $kontak->save();
+        $kontak = Kontak::create($data);
+
         session()->flash('success', 'Kontak Created SuccessFully.');
         return redirect()->route('kontak.all');
     }

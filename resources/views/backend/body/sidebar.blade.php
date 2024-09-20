@@ -33,7 +33,7 @@
           </li>
           <li>
               <a href="{{ route('sepatu.all') }}"
-                  class="side-menu {{ request()->routeIs('sepatu.all') ? 'side-menu--active' : '' }}">
+                  class="side-menu {{ request()->routeIs('sepatu.all') || request()->routeIs('sepatu.show.create') || request()->routeIs('sepatu.show.edit') ? 'side-menu--active' : '' }}">
                   <div class="side-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                           stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-footprints">

@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sepatus', function (Blueprint $table) {
+        Schema::create('sepatu_fotos', function (Blueprint $table) {
             $table->id();
+            $table->string('foto');
+            $table->foreignIdFor(\App\Models\Sepatu::class)->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sepatus');
+        Schema::dropIfExists('sepatu_fotos');
     }
 };

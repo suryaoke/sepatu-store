@@ -22,7 +22,7 @@ class brandsUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => ['required', 'max:255'],
+            'nama' => ['required', 'unique:brands,nama', 'max:255'],
             'foto' => [
                 'file', // Ensures it is a file
                 'mimes:jpg,jpeg,png', // Restrict the file types

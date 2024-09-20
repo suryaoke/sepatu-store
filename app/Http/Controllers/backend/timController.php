@@ -47,9 +47,8 @@ class timController extends Controller
             $data['foto'] = $path;
         }
 
-        $tim = new Tim($data);
-        $tim->created_at = Carbon::now();
-        $tim->save();
+        $tim = Tim::create($data);
+       
 
 
         session()->flash('success', 'Tim Created Successfully.');

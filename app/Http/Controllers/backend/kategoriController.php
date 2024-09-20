@@ -48,9 +48,8 @@ class kategoriController extends Controller
         }
 
 
-        $kategori = new Kategori($data);
-        $kategori->created_at = Carbon::now();
-        $kategori->save();
+        $kategori = Kategori::create($data);
+
         session()->flash('success', 'Kategori Created SuccessFully.');
         return redirect()->route('kategori.all');
     }
