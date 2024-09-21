@@ -19,7 +19,8 @@ class transaksi extends Model
         'status',
         'user_id',
         'sepatu_id',
-        'size_id'
+        'size_id',
+        'voucher_id'
 
     ];
 
@@ -27,7 +28,7 @@ class transaksi extends Model
     {
         return $this->belongsTo(Sepatu::class, 'sepatu_id', 'id'); // Adjust to match your actual relationship
     }
-  
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

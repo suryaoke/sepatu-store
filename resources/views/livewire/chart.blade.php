@@ -30,8 +30,10 @@
                       <th>Kode Transaksi</th>
                       <th>Sepatu</th>
                       <th>Ukuran</th>
-                      <th>Jumlah</th>
+                      <th>Harga Produk</th>
+                      <th>Kuantitas</th>
                       <th>Total Harga</th>
+                      <th>Tanggal Pesan</th>
                       <th>Status</th>
                       <th>Detail</th>
                   </tr>
@@ -57,10 +59,16 @@
                               {{ $size->ukuran }}
                           </td>
                           <td>
+                              Rp. {{ number_format($sepatu->harga, 0, ',', '.') }}
+                          </td>
+                          <td>
                               {{ $item->total_sepatu }}
                           </td>
                           <td>
                               Rp. {{ number_format($item->total_harga, 0, ',', '.') }}
+                          </td>
+                          <td>
+                            {{$item->created_at}}
                           </td>
                           <td>
                               @if ($item->status == '1')

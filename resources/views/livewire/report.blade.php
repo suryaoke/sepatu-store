@@ -58,7 +58,7 @@
                           <th class="whitespace-nowrap">Jumlah</th>
                           <th class="whitespace-nowrap">Total Harga</th>
                           <th class="whitespace-nowrap">Tanggal</th>
-\
+                          <th class="whitespace-nowrap">No Hp</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -94,10 +94,12 @@
                               <td class="font-medium whitespace-nowrap">
                                   {{ $item->created_at }}
                               </td>
-                                                   
+                              <td class="font-medium whitespace-nowrap">
+                                  {{ $item->user->hp }}
+                              </td>
                           </tr>
 
-                        
+
                           <!-- END: Delete Confirmation Modal -->
                       @endforeach
 

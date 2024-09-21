@@ -14,6 +14,7 @@ use App\Http\Controllers\frontend\registerController;
 use App\Http\Controllers\frontend\showController;
 use App\Http\Controllers\frontend\transaksiController as FrontendTransaksiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\backend\voucherController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\FrontendAuth;
 use App\Http\Middleware\PelangganMiddleware;
@@ -83,6 +84,13 @@ Route::controller(timController::class)->middleware(['auth'])->middleware(AdminM
     Route::post('admin/tim/create', 'create')->name('tim.create');
     Route::post('admin/tim/update', 'update')->name('tim.update');
     Route::get('admin/tim/delete/{id}', 'delete')->name('tim.delete');
+});
+
+Route::controller(voucherController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+    Route::get('admin/voucher', 'index')->name('voucher.all');
+    Route::post('admin/voucher/create', 'create')->name('voucher.create');
+    Route::post('admin/voucher/update', 'update')->name('voucher.update');
+    Route::get('admin/voucher/delete/{id}', 'delete')->name('voucher.delete');
 });
 
 

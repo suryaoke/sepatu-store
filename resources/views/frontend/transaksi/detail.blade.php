@@ -9,6 +9,10 @@
 
             <h1 class="font-['ClashDisplay-SemiBold'] text-[32px] leading-10 tracking-05 text-center">Transaction Detail</h1>
             <div class="flex items-center justify-between">
+                <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05"> {{ $transaksi->created_at }} </p>
+
+            </div>
+            <div class="flex items-center justify-between">
                 <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Kode Transaksi</p>
                 <p class="leading-19 tracking-05"> {{ $trx_id }} </p>
             </div>
@@ -24,10 +28,14 @@
                     $size = App\Models\Size::where('sepatu_id', $transaksi->sepatu_id)->first();
                 @endphp
                 <p class="leading-19 tracking-05"> {{ $size->ukuran }} </p>
+            </div>
+            <div class="flex items-center justify-between">
+                <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Harga Produk</p>
+                <p class="leading-19 tracking-05"> Rp. {{ number_format($sepatu->harga, 0, ',', '.') }} </p>
 
             </div>
             <div class="flex items-center justify-between">
-                <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Jumlah</p>
+                <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Kuantitas</p>
                 <p class="leading-19 tracking-05"> {{ $transaksi->total_sepatu }} </p>
 
             </div>
@@ -81,6 +89,10 @@
             </div>
             <div class="flex flex-col gap-2">
                 <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Proof</p>
+                <a href="{{ asset('storage/' . $transaksi->proof) }}" download>
+                    Download
+                </a>
+
 
             </div>
 

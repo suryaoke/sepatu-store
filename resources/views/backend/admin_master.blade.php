@@ -45,6 +45,8 @@ License: You must have a valid license purchased only from themeforest(the above
             Sepatu-Create
         @elseif (request()->routeIs('sepatu.show.edit'))
             Sepatu-Edit
+        @elseif (request()->routeIs('voucher.all'))
+            Voucher
         @endif - SteadyStride
     </title>
     <!-- BEGIN: CSS Assets-->

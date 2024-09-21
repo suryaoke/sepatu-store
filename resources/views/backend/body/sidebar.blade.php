@@ -47,7 +47,13 @@
                   <div class="side-menu__title"> Sepatu </div>
               </a>
           </li>
-
+          <li>
+              <a href="{{ route('voucher.all') }}"
+                  class="side-menu {{ request()->routeIs('voucher.all') ? 'side-menu--active' : '' }}">
+                  <div class="side-menu__icon"> <i data-lucide="ticket"></i> </div>
+                  <div class="side-menu__title"> Voucher </div>
+              </a>
+          </li>
           <li>
               <a href="{{ route('transaksi.all') }}"
                   class="side-menu {{ request()->routeIs('transaksi.all') ? 'side-menu--active' : '' }}">

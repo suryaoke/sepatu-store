@@ -15,6 +15,8 @@
                     <p class="font-['ClashDisplay-SemiBold'] text-xl leading-6 tracking-05">Account Details</p>
                     <p class="text-sm leading-16 tracking-03 opacity-60">Confirm and make sure your contact before checkout
                     </p>
+                    <p class="text-sm leading-16 tracking-03 opacity-60">{{ $transaksi->created_at }}
+                    </p>
                 </div>
                 <hr class="border-black opacity-10">
                 <div class="group flex items-center justify-between">
@@ -47,16 +49,17 @@
                         alt="icon">
                     <div class="flex flex-col gap-2 w-full">
                         <div class="flex justify-between">
-                            @foreach ($transaksi->sepatus as $sepatu)
-                                <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">{{ $sepatu->nama }}</p>
-                            @endforeach
+
+                            <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">{{ $transaksi->sepatus->nama }}
+                            </p>
+
                         </div>
                         <p class="text-sm leading-16 tracking-03 opacity-60">
                             Ukuran
                             @php
                                 $size = App\Models\Size::where('sepatu_id', $transaksi->sepatu_id)->first();
                             @endphp
-                            {{ $size->ukuran }} Jumlah {{ $transaksi->total_sepatu }}
+                            {{ $size->ukuran }} Kuantitas {{ $transaksi->total_sepatu }}
                         </p>
                     </div>
                 </div>

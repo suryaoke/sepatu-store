@@ -40,6 +40,8 @@
                          Sepatu-Create
                      @elseif (request()->routeIs('sepatu.show.edit'))
                          {{ $slug }}
+                     @elseif (request()->routeIs('voucher.all'))
+                         Voucher
                      @endif
 
                  </li>

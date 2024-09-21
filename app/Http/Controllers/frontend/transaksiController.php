@@ -52,19 +52,15 @@ class transaksiController extends Controller
     public function sepatuCheckout($slug)
     {
         $kontak = Kontak::first();
-        $tim = Tim::all();
+
         $kategori = Kategori::all();
-        $brands = Brands::orderby('nama', 'asc')->get();
 
-        $data = session()->get('transaksi');
-        $sepatu = Sepatu::where('slug', $data['slug'])->first();
-        $size = Size::where('id', $data['size_id'])->first();
-
-        return view('frontend.transaksi.checkout', compact('sepatu', 'kontak', 'tim', 'kategori', 'brands', 'data', 'size'));
+        return view('frontend.transaksi.checkout', compact('kontak', 'kategori',  'slug'));
     }
 
     public function sepatuCheckoutStore(checkoutRequest $request)
     {
+        
         $data = $request->validated();
         $total_sepatu = $request->total_sepatu;
         $sepatu_id = $request->sepatu_id;

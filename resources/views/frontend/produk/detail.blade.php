@@ -35,7 +35,7 @@
                         {{ number_format($sepatu->harga, 0, ',', '.') }}</p>
                     <div class="flex items-center gap-4">
 
-                        <p class="leading-19 tracking-05">Stock: {{ $sepatu->stock }} </p>
+                        <p class="leading-19 tracking-05">Stok: {{ $sepatu->stock }} </p>
                     </div>
                     <div class="flex items-center gap-4">
                         <p class="text-box leading-19 tracking-05"> {{ $sepatu->ket }} </p>
