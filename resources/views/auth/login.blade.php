@@ -41,7 +41,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <img style="width: 450px" alt="Midone - HTML Admin Template" class="-intro-x  -mt-16"
                         src="{{ asset('backend/src/images/illustration.svg') }}">
                     <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                        Langkah Pasti, Gaya Terdepan!
+                        Langkah Pasti, <br> Gaya Terdepan!
                     </div>
                     <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">Temukan koleksi
                         sepatu terbaru di Steady Stride <br> dan ciptakan
@@ -68,13 +68,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password">
 
                         </div>
-                        <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4">
-                            <div class="flex items-center mr-auto">
-                                <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
-                                <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
-                            </div>
-                            <a href="">Forgot Password?</a>
-                        </div>
+                       
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                             <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
                             <a href="{{ route('register') }}"

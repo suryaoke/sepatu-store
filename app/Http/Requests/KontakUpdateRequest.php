@@ -25,7 +25,8 @@ class KontakUpdateRequest extends FormRequest
             'alamat' => ['required', 'max:65535'],
             'email' => ['required', 'max:255'],
             'no_hp' => ['required', 'max:255'],
-
+            'city_id' => ['required', 'max:255'],
+            'province_id' => ['required', 'max:255']
         ];
     }
 }

@@ -26,6 +26,8 @@ class RegisterController extends Controller
                 'mimes:jpg,jpeg,png',
                 'max:4096',
             ],
+            'province_id' => ['required'],
+            'city_id' => ['required'],
         ]);
 
         // Cek apakah file foto ada
@@ -50,6 +52,8 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'alamat' => $request->alamat,
+            'province_id' => $request->province_id,
+            'city_id' => $request->city_id,
             'hp' => $request->hp,
             'foto' => isset($data['foto']) ? $data['foto'] : null,
             'role' => '1',

@@ -28,6 +28,7 @@ class profileController extends Controller
     public function update(frontendProfileUpdateRequest $request): RedirectResponse
     {
         // Mengisi user dengan data validasi dari request
+
         $request->user()->fill($request->validated());
 
         // Cek jika ada perubahan pada email
@@ -64,7 +65,7 @@ class profileController extends Controller
 
             $request->user()->foto = $request->user()->getOriginal('foto');
         }
-
+        $request->user()->province_id = $request->province_id;
         $request->user()->save();
 
 

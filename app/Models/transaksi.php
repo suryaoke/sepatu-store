@@ -20,7 +20,8 @@ class transaksi extends Model
         'user_id',
         'sepatu_id',
         'size_id',
-        'voucher_id'
+        'voucher_id',
+        'ongkir'
 
     ];
 
@@ -32,5 +33,9 @@ class transaksi extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+    public function voucher(): BelongsTo
+    {
+        return $this->belongsTo(Voucher::class, 'voucher_id');
     }
 }

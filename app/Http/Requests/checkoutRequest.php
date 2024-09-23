@@ -29,6 +29,7 @@ class checkoutRequest extends FormRequest
             'user_id' => ['required'],
             'size_id' => ['required'],
             'voucher_id',
+            'ongkir'
         ];
     }
 }

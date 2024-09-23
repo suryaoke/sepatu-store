@@ -40,6 +40,16 @@
 
             </div>
             <div class="flex items-center justify-between">
+                <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Kode Promo</p>
+                <p class="leading-19 tracking-05 text-[#EC0307]">-Rp.
+                    {{ $transaksi->voucher ? number_format($transaksi->voucher->harga, 0, ',', '.') : '0' }}</p>
+            </div>
+            <div class="flex items-center justify-between">
+                <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Ongkir</p>
+                <p class="leading-19 tracking-05"> Rp. {{ number_format($transaksi->ongkir, 0, ',', '.') }} </p>
+
+            </div>
+            <div class="flex items-center justify-between">
                 <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Total Payment</p>
                 <p class="leading-19 tracking-05 font-bold">Rp. {{ number_format($transaksi->total_harga, 0, ',', '.') }}
                 </p>
@@ -52,7 +62,7 @@
                     <p class="rounded-full py-3 px-6 bg-[#E56062] w-fit font-semibold leading-19 tracking-05 text-white">
                         Pending
                     </p>
-                @elseif($transaksi->status == null)
+                @elseif($transaksi->status == '5')
                     <p style="background: yellow"
                         class="rounded-full py-3 px-6  w-fit font-semibold leading-19 tracking-05 text-white">
                         Belum Bayar
@@ -89,9 +99,12 @@
             </div>
             <div class="flex flex-col gap-2">
                 <p class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Proof</p>
-                <a href="{{ asset('storage/' . $transaksi->proof) }}" download>
-                    Download
-                </a>
+                @if ($transaksi->proof != 0)
+                    <a href="{{ asset('storage/' . $transaksi->proof) }}" download>
+                        Download
+                    </a>
+                @endif
+
 
 
             </div>

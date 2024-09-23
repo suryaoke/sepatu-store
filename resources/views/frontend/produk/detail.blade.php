@@ -5,27 +5,26 @@
 @endsection
 
 @section('frontend')
-    <form action="{{ route('frontend.detail.checkout') }}" method="POST">
-        @csrf
-        <input type="hidden" name="slug" value="{{ $sepatu->slug }}">
-        <main id="content" class="relative flex w-full max-w-[1280px] gap-6 mx-auto px-10 mt-[96px]">
-            <section id="details" class="flex flex-col gap-6 w-full max-w-[820px] flex-1">
-                <div id="main-thumbnail" class="w-full h-[453px] rounded-3xl bg-[#06425E] overflow-hidden">
-                    <img src="{{ asset('storage/' . $sepatu->sepatuFoto->first()->foto) }}"
-                        class="w-full h-full object-cover" alt="main thumbnail">
-                </div>
-                <div id="gallery" class="grid grid-cols-4 gap-4">
-                    @foreach ($sepatufoto as $item)
-                        <button
-                            class="w-full rounded-2xl bg-[#D9D9D9] overflow-hidden transition-all duration-300 ring-[3px] {{ $loop->first ? 'ring-[#835DFE] ' : 'opacity-50' }}"
-                            style="{{ $loop->first ? 'border-color: #835DFE !important;' : '' }}">
-                            <img src="{{ asset('storage/' . $item->foto) }}" class="w-full h-full object-cover"
-                                alt="thumbnail">
-                        </button>
-                    @endforeach
-                </div>
+    <main id="content" class="relative flex w-full max-w-[1280px] gap-6 mx-auto px-10 mt-[96px]">
+        <section id="details" class="flex flex-col gap-6 w-full max-w-[820px] flex-1">
+            <div id="main-thumbnail" class="w-full h-[453px] rounded-3xl bg-[#06425E] overflow-hidden">
+                <img src="{{ asset('storage/' . $sepatu->sepatuFoto->first()->foto) }}" class="w-full h-full object-cover"
+                    alt="main thumbnail">
+            </div>
+            <div id="gallery" class="grid grid-cols-4 gap-4">
+                @foreach ($sepatufoto as $item)
+                    <button
+                        class="w-full rounded-2xl bg-[#D9D9D9] overflow-hidden transition-all duration-300 ring-[3px] {{ $loop->first ? 'ring-[#835DFE] ' : 'opacity-50' }}"
+                        style="{{ $loop->first ? 'border-color: #835DFE !important;' : '' }}">
+                        <img src="{{ asset('storage/' . $item->foto) }}" class="w-full h-full object-cover" alt="thumbnail">
+                    </button>
+                @endforeach
+            </div>
 
-            </section>
+        </section>
+        <form action="{{ route('frontend.detail.checkout') }}" method="POST">
+            @csrf
+            <input type="hidden" name="slug" value="{{ $sepatu->slug }}">
             <aside class="flex flex-col gap-6">
                 <div class="flex flex-col w-full rounded-3xl p-8 gap-6 bg-white">
                     <p class="text-box leading-19 tracking-05 text-bold" style="font-weight: bold;font-size:20px">
@@ -76,7 +75,7 @@
                 </div>
 
             </aside>
-        </main>
+    </main>
     </form>
 
 

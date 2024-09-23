@@ -68,7 +68,7 @@
                               Rp. {{ number_format($item->total_harga, 0, ',', '.') }}
                           </td>
                           <td>
-                            {{$item->created_at}}
+                              {{ $item->created_at }}
                           </td>
                           <td>
                               @if ($item->status == '1')
@@ -76,7 +76,7 @@
                                       class="rounded-full py-3 px-6 bg-[#E56062] w-fit font-semibold leading-19 tracking-05 text-white">
                                       Pending
                                   </p>
-                              @elseif($item->status == null)
+                              @elseif($item->status == '5')
                                   <p style="background: yellow"
                                       class="rounded-full py-3 px-6  w-fit font-semibold leading-19 tracking-05 text-white">
                                       Belum Bayar

@@ -47,6 +47,10 @@ License: You must have a valid license purchased only from themeforest(the above
             Sepatu-Edit
         @elseif (request()->routeIs('voucher.all'))
             Voucher
+        @elseif (request()->routeIs('kontak.show.create'))
+            Kontak-Create
+        @elseif (request()->routeIs('kontak.show.edit'))
+            Kontak-Edit
         @endif - SteadyStride
     </title>
     <!-- BEGIN: CSS Assets-->

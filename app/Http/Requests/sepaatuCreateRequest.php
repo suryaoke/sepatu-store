@@ -29,6 +29,7 @@ class sepaatuCreateRequest extends FormRequest
             'popular' => ['required', 'max:255'],
             'brands_id' => ['required'],
             'kategori_id' => ['required'],
+            'berat' => ['required'],
 
         ];
     }

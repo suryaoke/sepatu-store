@@ -41,7 +41,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <img style="width: 450px" alt="Midone - HTML Admin Template" class="-intro-x  -mt-16"
                         src="{{ asset('backend/src/images/illustration.svg') }}">
                     <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                        Langkah Pasti, Gaya Terdepan!
+                        Langkah Pasti, <br> Gaya Terdepan!
                     </div>
                     <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">
                         Temukan koleksi

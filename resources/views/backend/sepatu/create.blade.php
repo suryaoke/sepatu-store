@@ -117,6 +117,11 @@
 
                                          </select>
                                      </div>
+                                     <div class="mt-2">
+                                         <label class="form-label w-full flex flex-col sm:flex-row">
+                                             Berat (gram) </label> <input type="number" name="berat" class="form-control"
+                                             placeholder="Masukkan Berat" required>
+                                     </div>
                                  </div>
 
                              </div>

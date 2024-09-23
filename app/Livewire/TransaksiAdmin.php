@@ -15,7 +15,7 @@ class TransaksiAdmin extends Component
 
     public $searchnamasepatu = '';
     public $searchpelanggan = '';
-    public $selectedStatus = null;
+    public $selectedStatus = '';
 
     public function updatingSearch()
     {

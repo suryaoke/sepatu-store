@@ -8,7 +8,8 @@
                            class="text-white">SteadyStride</h2>
                    </a>
                </div>
-               <p class="tracking-03 text-white"> {{ $kontak->alamat }} </p>
+               <p class="tracking-03 text-white"> {{ $kontak->alamat }}, Kota {{ $kontak->city->name }}, Provinsi
+                   {{ $kontak->province->name }} </p>
            </div>
            <nav class="flex gap-16 justify-end text-white">
                <ul class="flex flex-col gap-4">

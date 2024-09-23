@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\KontakCreateRequest;
 use App\Http\Requests\KontakUpdateRequest;
 use App\Models\Kontak;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +17,15 @@ class kontakController extends Controller
     {
         $kontak = Kontak::all();
         $dataKontakSudahAda = $kontak->count() > 0;
+
         return view('backend.kontak.index', compact('kontak', 'dataKontakSudahAda'));
     }
 
+    public function showCreate()
+    {
+
+        return view('backend.kontak.create');
+    }
     public function create(KontakCreateRequest $request)
     {
         $data = $request->validated();
@@ -27,7 +34,11 @@ class kontakController extends Controller
         session()->flash('success', 'Kontak Created SuccessFully.');
         return redirect()->route('kontak.all');
     }
-
+    public function showEdit($id)
+    {
+        $kontak = Kontak::find($id);
+        return view('backend.kontak.edit', compact('kontak', 'id'));
+    }
     public function update(KontakUpdateRequest $request)
     {
         $kontak_id = $request->id;

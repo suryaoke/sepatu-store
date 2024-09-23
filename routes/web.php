@@ -74,7 +74,9 @@ Route::controller(akunPelangganController::class)->middleware(['auth'])->middlew
 
 Route::controller(kontakController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
     Route::get('admin/kontak', 'index')->name('kontak.all');
+    Route::get('admin/kontak/create', 'showCreate')->name('kontak.show.create');
     Route::post('admin/kontak/create', 'create')->name('kontak.create');
+    Route::get('admin/kontak/{id}', 'showEdit')->name('kontak.show.edit');
     Route::post('admin/kontak/update', 'update')->name('kontak.update');
     Route::get('admin/kontak/delete/{id}', 'delete')->name('kontak.delete');
 });
@@ -119,6 +121,9 @@ Route::controller(FrontendTransaksiController::class)->group(function () {
     Route::post('proof', 'proof')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class)->name('proof');
 
     Route::get('payment/detail/{trx_id}', 'paymentDetail')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class)->name('frontend.payment.detail');
+
+    Route::post('/ongkir', 'check_ongkir')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class);
+    Route::get('/cities/{province_id}', 'getCities')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class);
 });
 
 

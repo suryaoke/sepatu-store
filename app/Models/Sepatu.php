@@ -21,6 +21,7 @@ class Sepatu extends Model
         'popular',
         'brands_id',
         'kategori_id',
+        'berat'
     ];
 
     public static function boot()

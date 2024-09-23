@@ -65,11 +65,20 @@
                 </div>
                 <div class="group flex items-center justify-between">
                     <p class="flex w-[162px] shrink-0 font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Subtotal</p>
-                    <p class="leading-19 tracking-05">Rp. {{ number_format($transaksi->total_harga, 0, ',', '.') }}</p>
+                    @php
+                        $totalsepatu = App\Models\Sepatu::where('id', $transaksi->sepatu_id)->first();
+                        $subtotal = $totalsepatu->harga * $transaksi->total_sepatu;
+                    @endphp
+                    <p class="leading-19 tracking-05">Rp. {{ number_format($subtotal, 0, ',', '.') }}</p>
                 </div>
                 <div class="group flex items-center justify-between">
                     <p class="flex w-[162px] shrink-0 font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Promo Code</p>
-                    <p class="leading-19 tracking-05 text-[#EC0307]">-Rp 0</p>
+                    <p class="leading-19 tracking-05 text-[#EC0307]">-Rp.
+                        {{ $transaksi->voucher ? number_format($transaksi->voucher->harga, 0, ',', '.') : '0' }}</p>
+                </div>
+                <div class="group flex items-center justify-between">
+                    <p class="flex w-[162px] shrink-0 font-['ClashDisplay-SemiBold'] leading-19 tracking-05">Ongkir</p>
+                    <p class="leading-19 tracking-05">Rp. {{ number_format($transaksi->ongkir, 0, ',', '.') }}</p>
                 </div>
                 <hr class="border-black border-dashed">
                 <div class="w-full flex justify-between items-center rounded-2xl py-4 px-8 bg-[#D0EEFF]">
@@ -107,7 +116,7 @@
                     <input type="hidden" name="trx_id" value="{{ $transaksi->trx_id }}">
                     <label id="upload-proof" class="flex flex-col gap-1 font-['Poppins']">
                         <p class="font-semibold text-fitcamp-black">Transfer Proof</p>
-                        <div class="relative w-full rounded-xl border border-[#BFBFBF] py-4 px-3 bg-white">
+                        <div class=" w-full rounded-xl border border-[#BFBFBF] py-4 px-3 bg-white">
                             <p id="file-name" class="text-sm leading-[22px] tracking-03 text-[#BFBFBF]">Upload transfer
                                 proof</p>
                             <input type="file" name="proof" id="file-input" class="absolute top-0 -z-10">

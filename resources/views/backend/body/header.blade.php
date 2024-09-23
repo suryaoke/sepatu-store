@@ -42,6 +42,10 @@
                          {{ $slug }}
                      @elseif (request()->routeIs('voucher.all'))
                          Voucher
+                     @elseif (request()->routeIs('kontak.show.create'))
+                         Kontak-Create
+                     @elseif (request()->routeIs('kontak.show.edit'))
+                         Kontak-Edit
                      @endif
 
                  </li>

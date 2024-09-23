@@ -82,7 +82,7 @@
 
           <li>
               <a href="{{ route('kontak.all') }}"
-                  class="side-menu {{ request()->routeIs('kontak.all') ? 'side-menu--active' : '' }}">
+                  class="side-menu {{ request()->routeIs('kontak.all') || request()->routeIs('kontak.show.create') || request()->routeIs('kontak.show.edit') ? 'side-menu--active' : '' }}">
                   <div class="side-menu__icon"> <i data-lucide="contact"></i> </div>
                   <div class="side-menu__title"> Kontak </div>
               </a>

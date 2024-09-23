@@ -6,6 +6,7 @@
 
 @section('frontend')
     @livewire('voucher', ['slug' => $slug])
-@endsection
 
+    
+@endsection
 

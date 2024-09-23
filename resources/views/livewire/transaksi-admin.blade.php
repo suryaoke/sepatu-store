@@ -3,7 +3,7 @@
           <div class="items-center  rounded-[53px] bg-white" style="height: 63px; padding:10px;">
               <select wire:model.live.debounce.150ms="selectedStatus" style="height: 40px; padding:10px;">
                   <option value="">&nbsp;&nbsp &nbsp;&nbsp Pilih Status &nbsp;&nbsp &nbsp;&nbsp</option>
-                  <option value="null">Belum Bayar</option>
+                  <option value="5">Belum Bayar</option>
                   <option value="1">Pending</option>
                   <option value="2">Ditolak</option>
                   <option value="3">Dikirim</option>
@@ -14,7 +14,7 @@
 
               <form class="flex items-center w-[487px] rounded-[53px]  bg-white " style="height: 63px; padding:10px;">
                   <input type="text" wire:model.live.debounce.150ms="search"
-                      class="appearance-none outline-none !bg-white w-full leading-19 font-semibold placeholder:text-[#3F3F3F80]"
+                      class="appearance-none outline-none !bg-white w-full leading-19  placeholder:text-[#3F3F3F80]"
                       placeholder="Search Kode Transaksi...">
 
               </form>
@@ -24,7 +24,7 @@
 
               <form class="flex items-center w-[487px] rounded-[53px]  bg-white " style="height: 63px; padding:10px;">
                   <input type="text" wire:model.live.debounce.150ms="searchpelanggan"
-                      class="appearance-none outline-none !bg-white w-full leading-19 font-semibold placeholder:text-[#3F3F3F80]"
+                      class="appearance-none outline-none !bg-white w-full leading-19  placeholder:text-[#3F3F3F80]"
                       placeholder="Search Pelanggan...">
 
               </form>
@@ -35,10 +35,9 @@
 
               <form class="flex items-center w-[487px] rounded-[53px]  bg-white " style="height: 63px; padding:10px;">
                   <input type="text" wire:model.live.debounce.150ms="searchnamasepatu"
-                      class="appearance-none outline-none !bg-white w-full leading-19 font-semibold placeholder:text-[#3F3F3F80]"
+                      class="appearance-none outline-none !bg-white w-full leading-19  placeholder:text-[#3F3F3F80]"
                       placeholder="Search Sepatu...">
-                  <a href="{{ route('sepatu.all') }}"
-                      class="rounded-[48px] py-3 px-6  font-semibold leading-19 text-white"
+                  <a href="{{ route('transaksi.all') }}" class="rounded-[48px] py-3 px-6   leading-19 text-white"
                       style="background: red">Clear</a>
               </form>
 
@@ -104,7 +103,7 @@
                                       <button class="btn btn-pending">
                                           Pending
                                       </button>
-                                  @elseif($item->status == null)
+                                  @elseif($item->status == 5)
                                       <button class="btn btn-danger">
                                           Belum Bayar
                                       </button>
@@ -233,6 +232,26 @@
                                                               <div class="flex items-center justify-between">
                                                                   <p
                                                                       class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">
+                                                                      Kode Promo :
+                                                                  <p class="text-danger">
+                                                                      -Rp.
+                                                                      {{ $item->voucher ? number_format($item->voucher->harga, 0, ',', '.') : '0' }}
+                                                                  </p>
+                                                                  </p>
+
+                                                              </div>
+                                                              <div class="flex items-center justify-between">
+                                                                  <p
+                                                                      class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">
+                                                                      Ongkir : Rp.
+                                                                      {{ number_format($item->ongkir, 0, ',', '.') }}
+                                                                  </p>
+
+                                                              </div>
+
+                                                              <div class="flex items-center justify-between">
+                                                                  <p
+                                                                      class="font-['ClashDisplay-SemiBold'] leading-19 tracking-05">
                                                                       Total Payment : Rp.
                                                                       {{ number_format($item->total_harga, 0, ',', '.') }}
                                                                   </p>
@@ -247,7 +266,7 @@
                                                                           <button class="btn btn-pending">
                                                                               Pending
                                                                           </button>
-                                                                      @elseif($item->status == null)
+                                                                      @elseif($item->status == 5)
                                                                           <button class="btn btn-danger">
                                                                               Belum Bayar
                                                                           </button>
@@ -270,7 +289,7 @@
                                                                       for="modal-form-6" class="form-label">Update
                                                                       Status
                                                                       :&nbsp;&nbsp; </label>
-                                                                  <select name="status">
+                                                                  <select name="status" required>
                                                                       <option value="">--Pilih Status--</option>
                                                                       <option value="2">Ditolak</option>
                                                                       <option value="3">Dikirim</option>

@@ -52,6 +52,7 @@
                           <th class="whitespace-nowrap">Brands</th>
                           <th class="whitespace-nowrap">Kategori</th>
                           <th class="whitespace-nowrap">Stok</th>
+                          <th class="whitespace-nowrap">Berat (gram)</th>
                           <th class="whitespace-nowrap">Popular</th>
                           <th class="whitespace-nowrap">ACTIONS</th>
                       </tr>
@@ -78,6 +79,9 @@
                               </td>
                               <td class="font-medium whitespace-nowrap">
                                   {{ $item->stock }}
+                              </td>
+                              <td class="font-medium whitespace-nowrap">
+                                  {{ $item->berat }}
                               </td>
                               <td class="font-medium whitespace-nowrap">
                                   @if ($item->popular == 1)

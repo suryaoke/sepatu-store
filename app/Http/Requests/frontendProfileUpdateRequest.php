@@ -27,6 +27,8 @@ class frontendProfileUpdateRequest extends FormRequest
                 'max:4096', // Max file size is 4096KB, which equals 4MB
             ],
             'alamat' => ['required', 'string'],
+            'province_id' => ['required'],
+            'city_id' => ['required']
 
         ];
     }

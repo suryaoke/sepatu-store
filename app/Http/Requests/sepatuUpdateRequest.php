@@ -33,7 +33,8 @@ class sepatuUpdateRequest extends FormRequest
 
                 'array', // Pastikan 'foto' berupa array
             ],
-            
+            'berat' => ['required'],
+
         ];
     }
 }

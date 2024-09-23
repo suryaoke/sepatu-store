@@ -43,7 +43,6 @@ a @extends('backend.admin_master')
                                     <div class="" id="ukuran-wrapper">
 
                                         @foreach ($size as $item)
-                                            @csrf
                                             <div class="input-group mb-2">
                                                 <input type="number" value="{{ $item->ukuran }}" class="form-control"
                                                     readonly>
@@ -152,6 +151,11 @@ a @extends('backend.admin_master')
                                         </option>
 
                                     </select>
+                                </div>
+                                <div class="mt-2">
+                                    <label class="form-label w-full flex flex-col sm:flex-row">
+                                        Berat (gram) </label> <input type="number" value="{{ $sepatu->berat }}"
+                                        name="berat" class="form-control" placeholder="Masukkan Berat" required>
                                 </div>
                             </div>
 

@@ -2,7 +2,8 @@
        class="relative flex flex-col w-full max-w-[1280px] b p-8 py-[50px] gap-8 mx-auto px-10 mt-[120px]">
        <div class="flex items-center justify-between">
            <div class="flex flex-col gap-4">
-               <h2 class="font-['ClashDisplay-SemiBold'] text-5xl leading-[59px] tracking-05">Kategori
+               <h2 style="text-transform: uppercase; font-size: 60px"
+                   class="font-['ClashDisplay-SemiBold'] text-5xl leading-[59px] tracking-05">
                    {{ $slug }} </h2>
                <p class="leading-19 tracking-03 opacity-60"><br></p>
            </div>
