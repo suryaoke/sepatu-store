@@ -129,5 +129,6 @@ return [
         'Image' => Intervention\Image\Facades\Image::class
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
+  
 
 ];

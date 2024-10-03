@@ -23,34 +23,34 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 // route admin //
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'verified', 'role:admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::middleware(['auth'])->middleware(AdminMiddleware::class)->get('admin/dashboard', function () {
+Route::middleware(['auth', 'verified', 'role:admin'])->get('admin/dashboard', function () {
     return view('backend.index');
 })->name('dashboard');
 
-Route::controller(brandsController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+Route::controller(brandsController::class)->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('admin/brands', 'index')->name('brands.all');
     Route::post('admin/brands/create', 'create')->name('brands.create');
     Route::post('admin/brands/update', 'update')->name('brands.update');
     Route::get('admin/brands/delete/{id}', 'delete')->name('brands.delete');
 });
 
-Route::controller(kategoriController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+Route::controller(kategoriController::class)->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('admin/kategori', 'index')->name('kategori.all');
     Route::post('admin/kategori/create', 'create')->name('kategori.create');
     Route::post('admin/kategori/update', 'update')->name('kategori.update');
     Route::get('admin/kategori/delete/{id}', 'delete')->name('kategori.delete');
 });
 
-Route::controller(reportController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+Route::controller(reportController::class)->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('admin/report', 'index')->name('report.all');
 });
 
-Route::controller(sepatuController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+Route::controller(sepatuController::class)->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('admin/sepatu', 'index')->name('sepatu.all');
     Route::get('admin/sepatu/create', 'showCreate')->name('sepatu.show.create');
     Route::post('admin/sepatu/create', 'create')->name('sepatu.create');
@@ -62,17 +62,17 @@ Route::controller(sepatuController::class)->middleware(['auth'])->middleware(Adm
     Route::get('admin/sepatu/delete/{id}', 'sepatuDelete')->name('sepatu.delete');
 });
 
-Route::controller(transaksiController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+Route::controller(transaksiController::class)->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('admin/transaksi', 'index')->name('transaksi.all');
     Route::get('admin/transaksi/update', 'updatestatus')->name('transaksi.update.status');
     Route::get('admin/transaksi/delete/{id}', 'transaksiDelete')->name('transaksi.delete');
 });
 
-Route::controller(akunPelangganController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+Route::controller(akunPelangganController::class)->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('admin/akun/pelanggan', 'index')->name('akun.pelanggan.all');
 });
 
-Route::controller(kontakController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+Route::controller(kontakController::class)->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('admin/kontak', 'index')->name('kontak.all');
     Route::get('admin/kontak/create', 'showCreate')->name('kontak.show.create');
     Route::post('admin/kontak/create', 'create')->name('kontak.create');
@@ -81,14 +81,14 @@ Route::controller(kontakController::class)->middleware(['auth'])->middleware(Adm
     Route::get('admin/kontak/delete/{id}', 'delete')->name('kontak.delete');
 });
 
-Route::controller(timController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+Route::controller(timController::class)->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('admin/tim', 'index')->name('tim.all');
     Route::post('admin/tim/create', 'create')->name('tim.create');
     Route::post('admin/tim/update', 'update')->name('tim.update');
     Route::get('admin/tim/delete/{id}', 'delete')->name('tim.delete');
 });
 
-Route::controller(voucherController::class)->middleware(['auth'])->middleware(AdminMiddleware::class)->group(function () {
+Route::controller(voucherController::class)->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('admin/voucher', 'index')->name('voucher.all');
     Route::post('admin/voucher/create', 'create')->name('voucher.create');
     Route::post('admin/voucher/update', 'update')->name('voucher.update');
@@ -107,7 +107,7 @@ Route::controller(showController::class)->group(function () {
     Route::get('brand/{slug}', 'brand')->name('frontend.brand');
     Route::get('sepatu', 'sepatuAll')->name('frontend.sepatu');
 
-    Route::get('cart', 'cart')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class)->name('frontend.cart');
+    Route::get('cart', 'cart')->middleware(['auth_masyarakat', 'verified', 'role:masyarakat'])->name('frontend.cart');
 });
 
 
@@ -115,15 +115,15 @@ Route::controller(showController::class)->group(function () {
 Route::controller(FrontendTransaksiController::class)->group(function () {
     Route::get('checkout', 'checkout')->name('frontend.checkout');
     Route::post('detail/checkout', 'detail')->name('frontend.detail.checkout');
-    Route::get('checkout/{slug}', 'sepatuCheckout')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class)->name('frontend.sepatu.checkout');
-    Route::post('checkout/store', 'sepatuCheckoutStore')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class)->name('frontend.sepatu.checkout.store');
-    Route::get('payment/{trx_id}', 'payment')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class)->name('frontend.payment');
-    Route::post('proof', 'proof')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class)->name('proof');
+    Route::get('checkout/{slug}', 'sepatuCheckout')->middleware(['auth_masyarakat', 'verified', 'role:masyarakat'])->name('frontend.sepatu.checkout');
+    Route::post('checkout/store', 'sepatuCheckoutStore')->middleware(['auth_masyarakat', 'verified', 'role:masyarakat'])->name('frontend.sepatu.checkout.store');
+    Route::get('payment/{trx_id}', 'payment')->middleware(['auth_masyarakat', 'verified', 'role:masyarakat'])->name('frontend.payment');
+    Route::post('proof', 'proof')->middleware(['auth_masyarakat', 'verified', 'role:masyarakat'])->name('proof');
 
-    Route::get('payment/detail/{trx_id}', 'paymentDetail')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class)->name('frontend.payment.detail');
+    Route::get('payment/detail/{trx_id}', 'paymentDetail')->middleware(['auth_masyarakat', 'verified', 'role:masyarakat'])->name('frontend.payment.detail');
 
-    Route::post('/ongkir', 'check_ongkir')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class);
-    Route::get('/cities/{province_id}', 'getCities')->middleware(FrontendAuth::class)->middleware(PelangganMiddleware::class);
+    Route::post('/ongkir', 'check_ongkir')->middleware(['auth_masyarakat', 'verified', 'role:masyarakat']);
+    Route::get('/cities/{province_id}', 'getCities')->middleware(['auth_masyarakat', 'verified', 'role:masyarakat']);
 });
 
 

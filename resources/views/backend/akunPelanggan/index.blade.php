@@ -19,8 +19,7 @@
                                  <th class="whitespace-nowrap">Hp</th>
                                  <th class="whitespace-nowrap">Alamat</th>
                                  <th class="whitespace-nowrap">Foto</th>
-                                 <th class="whitespace-nowrap">Status</th>
-                                 <th class="whitespace-nowrap">ACTIONS</th>
+                                
                              </tr>
                          </thead>
                          <tbody>
@@ -45,20 +44,7 @@
                                          <img style="width: 75px" src="{{ asset('storage/' . $item->foto) }}"
                                              alt="">
                                      </td>
-                                     <td class="font-medium whitespace-nowrap">
-                                         {{ $item->status }}
-                                     </td>
-                                     <td class="font-medium whitespace-nowrap">
-                                         <a data-tw-toggle="modal"
-                                             data-tw-target="#delete-confirmation-modal-{{ $item->id }}"
-                                             class="btn btn-danger mr-1 mb-2">
-                                             <i data-lucide="trash" class="w-4 h-4"></i> </a>
-                                         <a data-tw-toggle="modal"
-                                             data-tw-target="#update-header-footer-modal-preview-{{ $item->id }}"
-                                             class="btn btn-warning mr-1 mb-2">
-                                             <i data-lucide="edit" class="w-4 h-4"></i>
-                                         </a>
-                                     </td>
+                                    
 
                                  </tr>
                              @endforeach

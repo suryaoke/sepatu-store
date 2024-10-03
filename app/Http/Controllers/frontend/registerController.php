@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'created_at' => Carbon::now(),
             'password' => Hash::make($request->password),
         ]);
-
+        $user->assignRole('masyarakat');
         session()->flash('success', 'User Created Successfully.');
         return redirect()->route('frontend.login');
     }

@@ -33,8 +33,8 @@
 
         <!-- Tombol Logout hanya muncul jika pengguna sudah login -->
         @auth
-            <!-- Cek apakah role pengguna adalah 1 -->
-            @if (Auth::user()->role == 0)
+            <!-- Cek apakah hasRole pengguna adalah 1 -->
+            @if (Auth::user()->hasRole('admin'))
                 <li>
                     <a href="{{ route('frontend.login') }}"
                         class="leading-19 tracking-0.5 text-white font-semibold rounded-[22px] py-3 px-6 bg-[#606DE5]">
@@ -42,7 +42,7 @@
                     </a>
                 </li>
             @endif
-            @if (Auth::user()->role == 1)
+            @if (Auth::user()->hasRole('masyarakat'))
                 <li>
                     <a href="#" class="dropdown-toggle">
                         <h3 class="font-['ClashDisplay-SemiBold'] text-xl leading-6 tracking-05">

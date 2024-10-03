@@ -29,8 +29,9 @@ class AuthenticatedSessionController extends Controller
 
         // Periksa apakah pengguna memiliki role 1
         $user = Auth::user();
-        if ($user->role != 0) {
-            Auth::logout(); // Logout pengguna jika tidak memiliki role 1
+
+        if ($user->hasRole('masyarakat')) {
+            Auth::logout();
             $request->session()->invalidate(); // Invalidate session
             $request->session()->regenerateToken(); // Regenerate session token
             return redirect()->route('login')->with('error', 'Anda tidak memiliki akses untuk login.');

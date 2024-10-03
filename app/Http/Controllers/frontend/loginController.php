@@ -37,7 +37,7 @@ class LoginController extends Controller
         $user = Auth::user();
 
         // Cek apakah user memiliki role == 1
-        if ($user->role != 1) {
+        if ($user->hasRole('admin')) {
             // Logout pengguna jika tidak memiliki role 1
             Auth::logout();
 

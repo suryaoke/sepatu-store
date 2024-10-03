@@ -1,6 +1,6 @@
   <div class="grid grid-cols-12 gap-6 mt-5">
       <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-          <div class="items-center  rounded-[53px] bg-white" style="height: 63px; padding:10px;">
+          {{--  <div class="items-center  rounded-[53px] bg-white" style="height: 63px; padding:10px;">
               <select wire:model.live.debounce.150ms="selectedStatus" style="height: 40px; padding:10px;">
                   <option value="">&nbsp;&nbsp &nbsp;&nbsp Pilih Status &nbsp;&nbsp &nbsp;&nbsp</option>
                   <option value="null">Belum Bayar</option>
@@ -9,7 +9,7 @@
                   <option value="3">Dikirim</option>
                   <option value="4">Diterima</option>
               </select>
-          </div>
+          </div>  --}}
           <div class="ml-2">
 
               <form class="flex items-center w-[487px] rounded-[53px]  bg-white " style="height: 63px; padding:10px;">
@@ -43,6 +43,18 @@
               </form>
 
           </div>
+          {{--  <div class="ml-2">
+
+              <form class="flex items-center w-[487px] rounded-[53px]  " style="height: 63px; padding:10px;">
+
+
+                  <a data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview"
+                      class="btn btn-warning mr-1 mb-2">
+                      <i data-lucide="printer" class="w-5 h-5"></i>
+                  </a>
+              </form>
+
+          </div>  --}}
       </div>
       <!-- BEGIN: Data List -->
       <div class="intro-y col-span-12 overflow-x-auto">
@@ -112,5 +124,75 @@
           <!-- END: Data List -->
 
       </div>
+      <!-- BEGIN: Modal Tambah -->
+      <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content"> <!-- BEGIN: Modal Header -->
+                  <div class="modal-header">
+                      <h2 class="font-medium text-base mr-auto">Report Transaksi</h2>
 
-  </div>
+                  </div> <!-- END: Modal Header --> <!-- BEGIN: Modal Body -->
+
+                  <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                      <form action="" method="POST" id="myForm">
+                          <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-4 ml-4">
+
+                              <div class="col-span-12 sm:col-span-12">
+                                  <label for="tgl_mulai">Tanggal Mulai</label>
+                                  <?php if (isset($_POST['tgl_mulai'])):  ?>
+
+                                  <input type="date" value="<?php echo $_POST['tgl_mulai']; ?>" name="tgl_mulai"
+                                      class="form-control" id="tgl_mulai">
+                                  <?php else : ?>
+                                  <input type="date" name="tgl_mulai" class="form-control" id="tgl_mulai">
+                                  <?php endif ?>
+                              </div>
+
+                              <div class="col-span-12 sm:col-span-12 ml-2">
+                                  <label for="tgl_sampai">Tanggal Sampai</label>
+                                  <?php if (isset($_POST['tgl_sampai'])):  ?>
+
+                                  <input type="date" value="<?php echo $_POST['tgl_sampai']; ?>" name="tgl_sampai"
+                                      class="form-control" id="tgl_sampai">
+                                  <?php else : ?>
+                                  <input type="date" name="tgl_sampai" class="form-control" id="tgl_sampai">
+                                  <?php endif ?>
+                              </div>
+
+
+                              <div class="col-span-12 sm:col-span-12 ml-2">
+                                  <button class="btn btn-primary" type="submit" name="filter">
+                                      <i class="w-5 h-5" data-lucide="search"></i>
+                                  </button>
+                                  <button onclick="cetak()" class="btn btn-dark">
+                                      <i class="w-5 h-5" data-lucide="printer"></i>
+                                  </button>
+                              </div>
+
+                          </div>
+                      </form>
+                      <script>
+                          function cetak() {
+                              // Ambil nilai dari input tanggal
+                              var tglMulai = document.getElementById('tgl_mulai').value;
+                              var tglSampai = document.getElementById('tgl_sampai').value;
+
+                              // Cek apakah kedua tanggal sudah diisi
+                              if (tglMulai === "" || tglSampai === "") {
+                                  alert("Silakan isi kedua tanggal terlebih dahulu.");
+                              } else {
+                                  // Jika kedua tanggal sudah diisi, lakukan cetak
+                                  $('#myForm').attr('action', 'laporan/print.php');
+                                  $('#myForm').attr('target', '_blank');
+                                  $('#myForm').submit();
+                              }
+                          }
+                      </script>
+
+
+
+
+                  </div>
+              </div>
+          </div> <!-- END: Modal Tambah -->
+      </div>
