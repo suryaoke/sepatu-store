@@ -10,7 +10,7 @@ class akunPelangganController extends Controller
 {
     public function index()
     {
-        $akunpelanggan = User::where('role', 1)->OrderBy('name', 'asc')->get();
+        $akunpelanggan = User::role('masyarakat')->OrderBy('name', 'asc')->get();
         return view('backend.akunPelanggan.index', compact('akunpelanggan'));
     }
 }

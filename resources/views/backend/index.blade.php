@@ -6,7 +6,8 @@
              $sepatu = App\Models\Sepatu::count();
              $voucher = App\Models\Voucher::count();
              $transaksi = App\Models\Transaksi::count();
-             $akunpelanggan = App\Models\User::where('role', '1')->count();
+             $akunpelanggan = App\Models\User::role('masyarakat')->count();
+
          @endphp
          <div class="grid grid-cols-12 gap-6">
              <div class="col-span-12 2xl:col-span-9">
@@ -93,7 +94,7 @@
                                          <div class="flex">
                                              <i data-lucide="ticket" class="report-box__icon text-danger"></i>
                                          </div>
-                                         <div class="text-3xl font-medium leading-8 mt-6"> {{$voucher}} </div>
+                                         <div class="text-3xl font-medium leading-8 mt-6"> {{ $voucher }} </div>
                                          <div class="text-base text-slate-500 mt-1">Voucher</div>
                                      </div>
                                  </div>
@@ -104,7 +105,7 @@
                                          <div class="flex">
                                              <i data-lucide="shopping-bag" class="report-box__icon text-success"></i>
                                          </div>
-                                         <div class="text-3xl font-medium leading-8 mt-6"> {{$transaksi}} </div>
+                                         <div class="text-3xl font-medium leading-8 mt-6"> {{ $transaksi }} </div>
                                          <div class="text-base text-slate-500 mt-1">Transaksi</div>
                                      </div>
                                  </div>
@@ -116,7 +117,7 @@
                                          <div class="flex">
                                              <i data-lucide="users" class="report-box__icon text-primary"></i>
                                          </div>
-                                         <div class="text-3xl font-medium leading-8 mt-6"> {{$akunpelanggan}} </div>
+                                         <div class="text-3xl font-medium leading-8 mt-6"> {{ $akunpelanggan }} </div>
                                          <div class="text-base text-slate-500 mt-1">Akun Pelanggan</div>
                                      </div>
                                  </div>
